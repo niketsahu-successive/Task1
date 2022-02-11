@@ -56,7 +56,7 @@ Scenario: Seller hides the customer email with a valid alternate email
     Then User should get customer error of length in between seven to fifteen characters in response
 
   # Scenario: Vendor is trying to hide the customer email with a valid alternate email
-  #   When User is hitting login endpoint to login as a vendors
+  #   When User is hitting login endpoint to login as a vendor
   #   Then User should get login status as ok in response
   #   When User is hitting customer endpoint with valid alternate email
   #   Then User should get customer error of unauthorized user in response

@@ -77,12 +77,12 @@ Feature:GQL: Allow seller to update metafield settings on marketcube platform
         When User is hitting update metafield setting endpoint with duplicate key value
         Then User should get update metafield setting error of duplicate key provided in responce
 
-    Scenario: Useadd multiple metafield with duplicate namespace
+    Scenario: User add multiple metafield with duplicate namespace
         When User is hitting update metafield setting endpoint with duplicate namespace value
         Then User should get update metafield setting error of duplicate namespace provided in responce
 
 # for vendor
-Scenario: User is trying to update metafield setting as a vendor
+Scenario: User is trying to update metafield setting as a vendo
         When User is hitting login endpoint to login as a vendor
         Then User should get login status as ok in response
         When User is hitting update metafield setting endpoint with content type input as string

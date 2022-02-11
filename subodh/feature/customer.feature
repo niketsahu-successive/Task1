@@ -60,5 +60,3 @@ Scenario: Seller hides the customer email with a valid alternate email
     Then User should get login status as ok in response
     When User is hitting customer endpoint with valid alternate email
     Then User should get customer error of unauthorized user in response
-
-

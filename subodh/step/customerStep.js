@@ -103,3 +103,4 @@ When('User is hitting customer endpoint with alternate phone number lesser than 
   const input = customerData.input({isPhoneNumberChecked:true,phoneNumber:"12345"});
   response = await I.sendMutation(customerData.query,input,{},{ token: loginData.token });
 });
+

@@ -1,19 +1,19 @@
 module.exports = {
-    customerData: {
+  customerData: {
     query: `
-    mutation  customer($input:CustomerData){
-      customer(input:$input){
-        status
-        data
-        error
+      mutation customer($input:CustomerData) {
+        customer(input:$input) {
+          status
+          data
+          error
         }
       }`,
 
     input: ({
-     email="",
-     phoneNumber="",
-     isEmailChecked=false,
-     isPhoneNumberChecked=false
+      email="",
+      phoneNumber="",
+      isEmailChecked=false,
+      isPhoneNumberChecked=false
     }) => ({
       input: {
         email,

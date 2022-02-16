@@ -4,10 +4,10 @@ Feature: GQL: Allow seller to customer on marketcube platform
   I want to customer on marketcube platform
 
   Background: Seller logins to marketcube with valid credentials
-      When User is hitting login endpoint with all valid details
-      Then User should get login status as ok in response
+    When User is hitting login endpoint with all valid details
+    Then User should get login status as ok in response
 
-Scenario: Seller hides the customer email with a valid alternate email
+  Scenario: Seller hides the customer email with a valid alternate email
     When User is hitting customer endpoint with valid alternate email
     Then User should get customer status as ok in response
 

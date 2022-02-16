@@ -8,11 +8,9 @@ const { customerData } = require("../../gqlQuery/customer/manageCustomer");
 const { loginData } = require("../../data/login/loginData");
 const { manageCustomerData } = require("../../data/customer/customerData");
 
-
-
 When('User is hitting customer endpoint with valid alternate email', async() => {
-  const input = customerData.input({isEmailChecked:true,email:manageCustomerData.email});
-  response = await I.sendMutation(customerData.query,input,{},{ token: loginData.token });
+  const input = customerData.input({ isEmailChecked:true, email:manageCustomerData.email });
+  response = await I.sendMutation(customerData.query, input, {}, { token: loginData.token });
 });
 
 Then('User should get customer status as ok in response', () => {
@@ -20,28 +18,28 @@ Then('User should get customer status as ok in response', () => {
 });
 
 When('User is hitting customer endpoint with valid alternate phone number', async() => {
-  const input = customerData.input({isPhoneNumberChecked:true,phoneNumber:manageCustomerData.alternatePhoneNumber});
-  response = await I.sendMutation(customerData.query,input,{},{ token: loginData.token });
+  const input = customerData.input({ isPhoneNumberChecked:true, phoneNumber:manageCustomerData.alternatePhoneNumber });
+  response = await I.sendMutation(customerData.query, input, {}, { token: loginData.token });
 });
 
 When('User is hitting customer endpoint with email checked value as false', async() => {
   const input = customerData.input({});
-  response = await I.sendMutation(customerData.query,input,{},{ token: loginData.token });
+  response = await I.sendMutation(customerData.query, input, {}, { token: loginData.token });
 });
 
 When('User is hitting customer endpoint with phone number checked value as false', async() => {
   const input = customerData.input({});
-  response = await I.sendMutation(customerData.query,input,{},{ token: loginData.token });
+  response = await I.sendMutation(customerData.query, input, {}, { token: loginData.token });
 });
 
 When('User is hitting customer endpoint with phone number checked value as true', async() => {
-  const input = customerData.input({isPhoneNumberChecked:true,});
-  response = await I.sendMutation(customerData.query,input,{},{ token: loginData.token });
+  const input = customerData.input({ isPhoneNumberChecked:true });
+  response = await I.sendMutation(customerData.query, input, {}, { token: loginData.token });
 });
 
 When('User is hitting customer endpoint without an alternate email', async() => {
-  const input = customerData.input({isEmailChecked:true,email:""});
-  response = await I.sendMutation(customerData.query,input,{},{ token: loginData.token });
+  const input = customerData.input({ isEmailChecked:true, email:"" });
+  response = await I.sendMutation(customerData.query, input, {}, { token: loginData.token });
 });
 
 Then('User should get customer error of email required in response', () => {
@@ -49,8 +47,8 @@ Then('User should get customer error of email required in response', () => {
 });
 
 When('User is hitting customer endpoint with alternate email and email checked value as false', async() => {
-  const input = customerData.input({email:manageCustomerData.email});
-  response = await I.sendMutation(customerData.query,input,{},{ token: loginData.token });
+  const input = customerData.input({ email:manageCustomerData.email });
+  response = await I.sendMutation(customerData.query, input, {}, { token: loginData.token });
 });
 
 Then('User should get customer error of cannot give alternate email in response', () => {
@@ -58,8 +56,8 @@ Then('User should get customer error of cannot give alternate email in response'
 });
 
 When('User is hitting customer endpoint with alternate phone number and phone number checked value as false', async() => {
-  const input = customerData.input({phoneNumber:manageCustomerData.phoneNumber});
-  response = await I.sendMutation(customerData.query,input,{},{ token: loginData.token });
+  const input = customerData.input({ phoneNumber:manageCustomerData.phoneNumber });
+  response = await I.sendMutation(customerData.query, input, {}, { token: loginData.token });
 });
 
 Then('User should get customer error of cannot give alternate phone number in response', () => {
@@ -67,8 +65,8 @@ Then('User should get customer error of cannot give alternate phone number in re
 });
 
 When('User is hitting customer endpoint without local part of alternate email', async() => {
-  const input = customerData.input({isEmailChecked:true,email:"@yopmail.com"});
-  response = await I.sendMutation(customerData.query,input,{},{ token: loginData.token });
+  const input = customerData.input({ isEmailChecked:true, email:"@yopmail.com" });
+  response = await I.sendMutation(customerData.query, input, {}, { token: loginData.token });
 });
 
 Then('User should get customer error of invalid email in response', () => {
@@ -76,23 +74,23 @@ Then('User should get customer error of invalid email in response', () => {
 });
 
 When('User is hitting customer endpoint with invalid local part of alternate email', async() => {
-  const input = customerData.input({isEmailChecked:true,email:"@yopmail.com"});
+  const input = customerData.input({ isEmailChecked:true, email:"@yopmail.com" });
   response = await I.sendMutation(customerData.query,input,{},{ token: loginData.token });
 });
 
 When('User is hitting customer endpoint with invalid domain part of alternate email', async() => {
-  const input = customerData.input({isEmailChecked:true,email:"suraj@.com"});
-  response = await I.sendMutation(customerData.query,input,{},{ token: loginData.token });
+  const input = customerData.input({ isEmailChecked:true, email:"suraj@.com" });
+  response = await I.sendMutation(customerData.query, input, {}, { token: loginData.token });
 });
 
 When('User is hitting customer endpoint without @ symbol in alternate email', async() => {
-  const input = customerData.input({isEmailChecked:true,email:"surajgmail.com"});
-  response = await I.sendMutation(customerData.query,input,{},{ token: loginData.token });
+  const input = customerData.input({ isEmailChecked:true, email:"surajgmail.com" });
+  response = await I.sendMutation(customerData.query, input, {}, { token: loginData.token });
 });
 
 When('User is hitting customer endpoint with alternate phone number greater than its max length', async() => {
-  const input = customerData.input({isPhoneNumberChecked:true,phoneNumber:"12345678987654321"});
-  response = await I.sendMutation(customerData.query,input,{},{ token: loginData.token });
+  const input = customerData.input({ isPhoneNumberChecked:true, phoneNumber:"12345678987654321" });
+  response = await I.sendMutation(customerData.query, input, {}, { token: loginData.token });
 });
 
 Then('User should get customer error of length in between seven to fifteen characters in response', () => {
@@ -100,7 +98,6 @@ Then('User should get customer error of length in between seven to fifteen chara
 });
 
 When('User is hitting customer endpoint with alternate phone number lesser than its min length', async() => {
-  const input = customerData.input({isPhoneNumberChecked:true,phoneNumber:"12345"});
-  response = await I.sendMutation(customerData.query,input,{},{ token: loginData.token });
+  const input = customerData.input({ isPhoneNumberChecked:true, phoneNumber:"12345" });
+  response = await I.sendMutation(customerData.query, input, {}, { token: loginData.token });
 });
-

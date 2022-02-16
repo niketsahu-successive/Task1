@@ -10,4 +10,3 @@ module.exports = {
     emailRequiredHss : "Invalid value provided in email."
   }
 }
- 

@@ -1,9 +1,9 @@
 // data
-const { taxSettingData } = require("../../data/shippingTaxSetting/shippingTaxSettingData");
+const { taxSettingData} = require("../../data/shippingTaxSetting/shippingTaxSettingData");
 
 module.exports = {
-    shippingTaxSetting: {
-      query: `
+  shippingTaxSetting: {
+    query: `
       mutation updateShippingTaxSetting($input: UpdateShippingTaxSetting) {
         updateShippingTaxSetting(input: $input) {
           error
@@ -11,17 +11,17 @@ module.exports = {
           status
         }
       }`,
-      input: ({
-        isTaxInclusive = taxSettingData.isTaxInclusive,
-        value= taxSettingData.value,
-      }) => ({
-        input: {
-          shipping: {
-            isTaxInclusive,
-            value,
-       }
-        },
-      }),
-    },
-  };
-  
+
+    input: ({
+      isTaxInclusive = taxSettingData.isTaxInclusive,
+      value = taxSettingData.value,
+    }) => ({
+      input: {
+        shipping: {
+          isTaxInclusive,
+          value,
+        }
+      },
+    }),
+  },
+};

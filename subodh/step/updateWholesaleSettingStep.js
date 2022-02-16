@@ -9,7 +9,7 @@ const { loginData } = require("../../data/login/loginData");
 const { updateWholesaleSetting} = require("../../data/updateWholesaleSetting/updateWholesalesettingData.js");
 
 When('User is hitting update wholesale setting endpoint for Wholesale price visible as true', async() => {
-  const input = updateWholesale.input({ isWholesalePriceVisible:updateWholesaleSetting.enableWholesalePrice });
+  const input = updateWholesale.input({ isWholesalePriceVisible: updateWholesaleSetting.enableWholesalePrice });
   response = await I.sendMutation(updateWholesale.query, input, {}, { token: loginData.token })
 });
 
@@ -18,17 +18,17 @@ Then('User should get customer status as ok in response', () => {
 });
 
 When('User is hitting update wholesale setting endpoint for wholesale price visible as false',async () => {
-  const input = updateWholesale.input({ isWholesalePriceVisible:updateWholesaleSetting.disableWholesalePrice });
+  const input = updateWholesale.input({ isWholesalePriceVisible: updateWholesaleSetting.disableWholesalePrice });
   response = await I.sendMutation(updateWholesale.query, input, {}, { token: loginData.token })
 });
 
 When('User is hitting update wholesale setting endpoint wholesale price visible as true', async() => {
-  const input = updateWholesale.input({ isWholesalePriceVisible:updateWholesaleSetting.enableWholesalePrice });
+  const input = updateWholesale.input({ isWholesalePriceVisible: updateWholesaleSetting.enableWholesalePrice });
   response = await I.sendMutation(updateWholesale.query, input, {}, { token: loginData.token })
 });
 
 When('User is hitting update wholesale setting endpoint for wholesale price visible value as true', async() => {
-  const input = updateWholesale.input({ isWholesalePriceVisible:updateWholesaleSetting.enableWholesalePrice });
+  const input = updateWholesale.input({ isWholesalePriceVisible: updateWholesaleSetting.enableWholesalePrice });
   response = await I.sendMutation(updateWholesale.query, input, {}, { token: loginData.token })
 });
 
@@ -37,17 +37,17 @@ Then('User should get update wholesale setting error wholesale price setting is 
 });
 
 When('User is hitting update wholesale setting endpoint for wholesale price visible as false', async() => {
-  const input = updateWholesale.input({ isWholesalePriceVisible:updateWholesaleSetting.disableWholesalePrice });
+  const input = updateWholesale.input({ isWholesalePriceVisible: updateWholesaleSetting.disableWholesalePrice });
   response = await I.sendMutation(updateWholesale.query, input, {}, { token: loginData.token })
 });
 
 When('User is hitting update wholesale setting endpoint for wholesale price visible as true', async() => {
-  const input = updateWholesale.input({ isWholesalePriceVisible:updateWholesaleSetting.enableWholesalePrice });
+  const input = updateWholesale.input({ isWholesalePriceVisible: updateWholesaleSetting.enableWholesalePrice });
   response = await I.sendMutation(updateWholesale.query, input, {}, { token: loginData.token })
 });
 
 When('User is hitting update wholesale setting endpoint for wholesale price visible value as false', async() => {
-  const input = updateWholesale.input({ isWholesalePriceVisible:updateWholesaleSetting.disableWholesalePrice });
+  const input = updateWholesale.input({ isWholesalePriceVisible: updateWholesaleSetting.disableWholesalePrice });
   response = await I.sendMutation(updateWholesale.query, input, {}, { token: loginData.token })
 });
 
@@ -56,7 +56,7 @@ Then('User should get update wholesale setting error wholesale price setting is 
 });
 
 When('User is hitting update wholesale setting endpoint with value as true', async() => {
-  const input = updateWholesale.input({ isWholesalePriceVisible:updateWholesaleSetting.enableWholesalePrice });
+  const input = updateWholesale.input({ isWholesalePriceVisible: updateWholesaleSetting.enableWholesalePrice });
   response = await I.sendMutation(updateWholesale.query, input, {}, { token: loginData.token })
 });
 

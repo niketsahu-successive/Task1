@@ -1,8 +1,8 @@
 module.exports = {
     updateWholesale: {
       query: `
-        mutation updateWholesaleSetting($input:WholesaleSetting) {
-          updateWholesaleSetting(input:$input) {
+        mutation updateWholesaleSetting($input: WholesaleSetting) {
+          updateWholesaleSetting(input: $input) {
             status
             data
             error
@@ -10,7 +10,7 @@ module.exports = {
         }`,
   
       input: ({
-        isWholesalePriceVisible=updateWholesaleSetting.enableWholesalePrice
+        isWholesalePriceVisible= updateWholesaleSetting.enableWholesalePrice
       }) => ({
         input: {
           isWholesalePriceVisible

@@ -1,0 +1,62 @@
+Feature: GQL: Allow seller to customer on marketcube platform
+
+  As a marketcube user
+  I want to customer on marketcube platform
+
+  Background: Seller logins to marketcube with valid credentials
+    When User is hitting login endpoint with all valid details
+    Then User should get login status as ok in response
+
+  Scenario: Seller hides the customer email with a valid alternate email
+    When User is hitting customer endpoint with valid alternate email
+    Then User should get customer status as ok in response
+
+  Scenario: Seller hides the customer phone number with a valid alternate phone number
+    When User is hitting customer endpoint with valid alternate phone number
+    Then User should get customer status as ok in response
+
+  Scenario: Seller un-hides the customer email
+    When User is hitting customer endpoint with email checked value as false
+    Then User should get customer status as ok in response
+
+  Scenario: Seller un-hides the customer phone number
+    When User is hitting customer endpoint with phone number checked value as false
+    Then User should get customer status as ok in response
+
+  Scenario: Seller hides the customer phone number without any alternate phone number
+    When User is hitting customer endpoint with phone number checked value as true
+    Then User should get customer status as ok in response
+
+  Scenario: Seller is trying to hide the customer email without an alternate email
+    When User is hitting customer endpoint without an alternate email
+    Then User should get customer error of email required in response
+
+  Scenario: Seller is trying to give an alternate email without hiding the customer email
+    When User is hitting customer endpoint with alternate email and email checked value as false
+    Then User should get customer error of cannot give alternate email in response
+
+  Scenario: Seller is trying to give an alternate phone number without hiding the customer phone number
+    When User is hitting customer endpoint with alternate phone number and phone number checked value as false
+    Then User should get customer error of cannot give alternate phone number in response
+
+  Scenario: Seller is trying to hide the customer email with an invalid alternate email
+    When User is hitting customer endpoint without local part of alternate email
+    Then User should get customer error of invalid email in response
+    When User is hitting customer endpoint with invalid local part of alternate email
+    Then User should get customer error of invalid email in response
+    When User is hitting customer endpoint with invalid domain part of alternate email
+    Then User should get customer error of invalid email in response
+    When User is hitting customer endpoint without @ symbol in alternate email
+    Then User should get customer error of invalid email in response
+
+  Scenario: Seller is trying to hide the customer phone number with an invalid alternate phone number
+    When User is hitting customer endpoint with alternate phone number greater than its max length
+    Then User should get customer error of length in between seven to fifteen characters in response
+    When User is hitting customer endpoint with alternate phone number lesser than its min length
+    Then User should get customer error of length in between seven to fifteen characters in response
+
+  Scenario: Vendor is trying to hide the customer email with a valid alternate email
+    When User is hitting login endpoint to login as a vendor
+    Then User should get login status as ok in response
+    When User is hitting customer endpoint with valid alternate email
+    Then User should get customer error of unauthorized user in response

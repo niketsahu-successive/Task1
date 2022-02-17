@@ -1,16 +1,16 @@
 module.exports = {
-    sellerShipping: {
+  sellerShipping: {
     query: `
-    mutation updateSellerShippingSetting($input:UpdateSellerSetting){
-        updateSellerShippingSetting(input:$input){
+      mutation updateSellerShippingSetting($input: UpdateSellerSetting) {
+        updateSellerShippingSetting(input: $input) {
           status
           data
           error
-          }
-        }`,
+        }
+     }`,
 
     input: ({
-        isExcludeShippingAmount=sellerShippingData.enableExcludeShippingAmount
+      isExcludeShippingAmount= sellerShippingData.enableExcludeShippingAmount
     }) => ({
       input: {
         isExcludeShippingAmount

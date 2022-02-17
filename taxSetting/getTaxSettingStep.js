@@ -61,4 +61,3 @@ When("User is hitting tax setting endpoint with valid token", async () => {
   When("User is hitting tax setting endpoint with valid token", async () => {
     response = await I.sendMutation(getTaxSetting.query, {}, {}, { token: loginData.token });
   });
-  

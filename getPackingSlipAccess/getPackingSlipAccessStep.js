@@ -46,8 +46,8 @@ Then("User should get packing slip access error of unauthorized user in response
   assert.equal(response.data.data.getPackingSlipAccess.error, packingSlipAccessData.unAuthorized);
 });
 
-When("User is hitting packing slip access endpoint with invalid token", async () => {
-  response = await I.sendMutation(getPackingSlipAccess.query, {}, {}, {token: packingSlipAccessData.error});
+When("User is hitting packing slip access endpoint with an invalid token", async () => {
+  response = await I.sendMutation(getPackingSlipAccess.query, {}, {}, {token: packingSlipAccessData.invalidString});
 });
   
 Then("User should packing slip access error of invalid token provided in response", () => {

@@ -4,6 +4,7 @@ module.exports = {
       query getPackingSlipAccess {
         getPackingSlipAccess {
           status
+          error
           data {
             isEnabled
             isAllVendor
@@ -11,9 +12,7 @@ module.exports = {
             selectedVendor
             updatedAt
           }
-          error
         }
-      } 
-      `,
+      }`,
     },
   };

@@ -19,12 +19,12 @@ Feature: GQL: Allow user to fetch packing slip access on marketcube platform
     When User fetches packing slip access data from the database
     Then User should have same packing slip access data as data from the database
 
-  Scenario: User fetches packing slip access as a admin
+  Scenario: User is trying to fetch packing slip access as an admin
     When User is hitting login endpoint to login as a admin
     Then User should get login status as ok in response
     When User is hitting packing slip access endpoint with valid token
     Then User should get packing slip access error of unauthorized user in response
 
-  Scenario: User fetches packing slip access with invalid token
-    When User is hitting packing slip access endpoint with invalid token
+  Scenario: User is trying to fetch packing slip access with an invalid token
+    When User is hitting packing slip access endpoint with an invalid token
     Then User should packing slip access error of invalid token provided in response

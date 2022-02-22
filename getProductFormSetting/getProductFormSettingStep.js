@@ -68,4 +68,3 @@ When("User is hitting product form setting endpoint with an invalid token", asyn
 Then("User should product form setting error of invalid token provided in response", () => {
   assert.equal(response.data.data.getProductFormSetting.error, productFormData.invalidToken);
 });
-     

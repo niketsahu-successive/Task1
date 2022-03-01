@@ -89,7 +89,7 @@ Then('User should get update payment report setting error of duplicate data foun
   assert.equal(response.data.data.updatePaymentReportSetting.error, paymentReportSettingData.sameLabelName);
 });
 
-Then('User should get update payment report setting error of unauthorized user in response', () => {
+Then('User should get update payment report setting error of You are not authorized to perform this action in response', () => {
   assert.equal(response.data.data.updatePaymentReportSetting.error, paymentReportSettingData.unauthorized);
 });
 

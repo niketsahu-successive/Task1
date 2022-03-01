@@ -5,10 +5,9 @@ const I = require("../../customSteps");
 const { getOrderExportSetting } = require("../../gqlQuery/orderExportSetting/getOrderExportSetting");
 
 // data
-const { associationData } = require("../../data/association/getAssociationData");
 const { loginData } = require("../../data/login/loginData");
 const { collectionData } = require("../../data/collection/collectionData");
-const { orderExportSettingData } = require("../../data/orderExportSetting/getOrderExportSettingData");
+const { orderExportSettingData } = require("../../data/orderExportSetting/orderExportSettingData");
 
 // helper
 const dbHelper = require("../../helper/dbConnection");
@@ -29,12 +28,12 @@ When("User is hitting order export setting endpoint with valid token", async () 
     const { _id, roles } = await baseHelper.getCurrentUser("roles {name}");
     const  isSeller  = ( roles.name === orderExportSettingData.seller );
     const query  = isSeller ? { sellerId: _id } : { vendorId : _id};
-    const projection1 = { "order.export": 1, updatedAt:1, _id: 0  };
+    const projection = { "order.export": 1, updatedAt:1, _id: 0  };
     const collection = isSeller ?  collectionData.sellerSetting  : collectionData.vendorSetting ;
-    const { order = null, updatedAt } = await dbHelper.findOne(collection,  query , projection1 );
+    const { order , updatedAt  } = await dbHelper.findOne(collection,  query , projection ) || {};
     exportSettingData = {
     export : order ? (order.export || null) : null,
-    updatedAt: updatedAt.toISOString(),  
+    updatedAt: updatedAt ? updatedAt.toISOString() : null,  
   }
 });
 
@@ -42,7 +41,7 @@ Then("User should have same order export setting data as data from the database"
     assert.deepEqual(response.data.data.getOrderExportSetting.data, exportSettingData);
   });
 
-When("User is hitting order export setting endpoint with invalid token", async () => {
+When("User is hitting order export setting endpoint with an invalid token", async () => {
     response = await I.sendMutation(getOrderExportSetting.query, {}, {}, { token:orderExportSettingData.invalidToken });
   });
   

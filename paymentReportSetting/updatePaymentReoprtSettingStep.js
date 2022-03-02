@@ -6,8 +6,8 @@ const { paymentReportSetting } = require("../../gqlQuery/paymentReportSetting/up
 
 // data
 const { loginData } = require("../../data/login/loginData");
-const { paymentReportSettingData } = require("../../data/updatePaymentReport/updatePaymentReportSettingData");
-const {collectionData} = require("../../data/collection/collectionData");
+const { paymentReportSettingData } = require("../../data/updatePaymentReport/paymentReportSettingData");
+const { collectionData } = require("../../data/collection/collectionData");
 
 const dbHelper = require("../../helper/dbConnection");
 const baseHelper = require("../../helper/base");
@@ -89,7 +89,7 @@ Then('User should get update payment report setting error of duplicate data foun
   assert.equal(response.data.data.updatePaymentReportSetting.error, paymentReportSettingData.sameLabelName);
 });
 
-Then('User should get update payment report setting error of You are not authorized to perform this action in response', () => {
+Then('User should get update payment report setting error of unauthorized user in response', () => {
   assert.equal(response.data.data.updatePaymentReportSetting.error, paymentReportSettingData.unauthorized);
 });
 

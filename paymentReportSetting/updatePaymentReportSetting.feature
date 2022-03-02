@@ -67,7 +67,7 @@ Feature: GQL: Allow seller to updating payment report setting on marketcube plat
     When User is hitting login endpoint to login as a admin
     Then User should get login status as ok in response
     When User is hitting update payment report setting endpoint with label value for vendor payment status
-    Then User should get update payment report setting error of You are not authorized to perform this action in response
+    Then User should get update payment report setting error of unauthorized user in response
 
   Scenario: User is trying to update payment report setting with an invalid token
     When User is hitting update payment report setting endpoint with an invalid token

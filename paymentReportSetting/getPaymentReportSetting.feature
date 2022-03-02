@@ -23,7 +23,7 @@ Scenario: User is trying to fetch payment report setting as an admin
   When User is hitting login endpoint to login as a admin
   Then User should get login status as ok in response
   When User is hitting payment report setting endpoint with valid token
-  Then User should get payment report setting error of You are not authorized to perform this action in response
+  Then User should get payment report setting error of unauthorized user in response
 
 Scenario: User is trying to fetch payment report setting with an invalid token
   When User is hitting payment report setting endpoint with an invalid token

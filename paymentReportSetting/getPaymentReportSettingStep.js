@@ -1,13 +1,13 @@
-const { assert} = require("chai");
+const { assert } = require("chai");
 const I = require("../../customSteps");
 
 // query
-const {getPaymentReportSetting} = require("../../gqlQuery/paymentReportSetting/getPaymentReportSetting");
+const { getPaymentReportSetting } = require("../../gqlQuery/paymentReportSetting/getPaymentReportSetting");
 
 // data
-const { paymentReportSettingData} = require("../../data/paymentReport/getPaymentReportSettingData");
-const {loginData} = require("../../data/login/loginData");
-const {collectionData} = require("../../data/collection/collectionData");
+const { paymentReportSettingData } = require("../../data/paymentReport/paymentReportSettingData");
+const { loginData } = require("../../data/login/loginData");
+const { collectionData } = require("../../data/collection/collectionData");
 
 // helper
 const dbHelper = require("../../helper/dbConnection");
@@ -17,7 +17,7 @@ let response;
 let paymentReportData;
 
 When("User is hitting payment report setting endpoint with valid token", async () => {
-  response = await I.sendMutation(getPaymentReportSetting.query, {}, {}, {token: loginData.token});
+  response = await I.sendMutation(getPaymentReportSetting.query, {}, {}, { token: loginData.token });
 });
 
 Then("User should get payment report setting status as ok in response", () => {
@@ -25,12 +25,12 @@ Then("User should get payment report setting status as ok in response", () => {
 });
 
 When("User fetches payment report setting data from the database", async () => {
-  const { _id, roles } = await baseHelper.getCurrentUser("roles {name}");
+  const { _id, roles } = await baseHelper.getCurrentUser("roles { name }");
   const isSeller = (roles.name === paymentReportSettingData.seller)
   const query =  isSeller ? { sellerId: _id } : { vendorId: _id }
   const projection = { _id: 0, "report.payment": 1  };
   const collection =  isSeller ? collectionData.sellerSetting : collectionData.vendorSetting
-  const { report: { payment } } = await dbHelper.findOne(collection, query, projection) || {};
+  const { report: { payment = {} } } = await dbHelper.findOne(collection, query, projection);
   paymentReportData = {
     report:{
     sellerCommission   : payment ? (payment.sellerCommission || null) : null,
@@ -49,7 +49,7 @@ When("User is hitting payment report setting endpoint with an invalid token", as
   response = await I.sendMutation(getPaymentReportSetting.query, {}, {}, { token: paymentReportSettingData.invalidString });
   });
 
-  Then("User should get payment report setting error of You are not authorized to perform this action in response", () => {
+  Then("User should get payment report setting error of unauthorized user in response", () => {
     assert.equal(response.data.data.getPaymentReportSetting.error, paymentReportSettingData.unauthorized);
   });
 

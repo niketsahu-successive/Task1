@@ -5,7 +5,7 @@ const I = require("../../customSteps");
 const { getMetafieldSetting } = require("../../gqlQuery/metafield/getMetafieldSetting");
 
 // data
-const { metafieldSettingData } = require("../../data/metafield/getMetafieldSettingData");
+const { metafieldSettingData } = require("../../data/metafield/metafieldSettingData");
 const { loginData } = require("../../data/login/loginData");
 const { collectionData } = require("../../data/collection/collectionData");
 

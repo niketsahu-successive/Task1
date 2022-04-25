@@ -1,0 +1,38 @@
+const faker = require("faker");
+let serviceId ;
+let productId ;
+module.exports = {
+    addServiceData: {
+        capacity              : 23,
+        duration              : 120,
+        durationErrorMessage  : "value should be smalller then 1440 ",
+        durationInvalidValue  : 1441,
+        frequency             : 45,
+        friClose              : 98,
+        friOpen               : 13,
+        invalidDuration       : "value should be smaller then 1440",
+        invalidLocationId     : "sjkdisudsiuds_shdskbdsmddjoaw8783h",
+        invalidProductId      : "sdsdsbjdsdbsnd_djnsndksmdksdkm",
+        invalidTokenMessage   : "Invalid token provided.",
+        invalidValue          : 0,
+        locationId            : "",
+        locationIdErrorMessage: "Invalid value provided in locationId.",
+        monClose              : 45,
+        monOpen               : 22,
+        productId             : "",
+        productIdErrorMessage : "Invalid value provided in productId.",
+        satClose              : 76, 
+        satOpen               : 76,
+        serviceId             : "",
+        sunClose              : 47, 
+        sunOpen               : 57,
+        thuClose              : 33,
+        thuOpen               : 67,
+        tueClose              : 33,
+        tueOpen               : 23,
+        type                  : "ffff",
+        wedClose              : 454,
+        wedOpen               : 56,
+        zeroInput             : "Value should be greater then 0",
+  },
+};
